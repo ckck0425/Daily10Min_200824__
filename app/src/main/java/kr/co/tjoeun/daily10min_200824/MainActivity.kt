@@ -18,7 +18,10 @@ class MainActivity : BaseActivity() {
         loginBtn.setOnClickListener{
             val inputId = idEdt.text.toString()
             val inputPw = pwEdt.text.toString()
-//            이 받아낸 id/pw 를
+
+//            이 받아낸 id/pw 를 어떻게 서버에 로그인 확인으로 요청하는지 ?
+
+
         }
 
     }
