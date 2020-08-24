@@ -17,7 +17,7 @@
         <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/"/>
+        android:src="@drawable/vgt_kauai_hawaii"/>
 
     </LinearLayout>
 
@@ -29,6 +29,7 @@
         android:layout_marginTop="15dp"/>
 
     <EditText
+        android:id="@+id/idEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -43,6 +44,7 @@
         android:layout_marginTop="10dp"/>
 
     <EditText
+        android:id="@+id/pwEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -71,6 +73,7 @@
             android:text="회원가입"/>
 
         <Button
+            android:id="@+id/loginBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
