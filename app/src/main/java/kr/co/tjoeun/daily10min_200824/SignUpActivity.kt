@@ -24,6 +24,38 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        signUpPwEdt.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val inputPassword = s.toString()
+
+                if (s.length == 0 ) {
+                    passwordCheckResultTxt.text = "비밀번호를 입력해주세요."
+                }
+
+                else if ( inputPassword.length < 8){
+                    passwordCheckResultTxt.text = "비밀번호가 너무 짧습니다."
+
+                }
+
+                else {
+                    passwordCheckResultTxt.text = "사용해도 좋은 비밀번호입니다."
+
+                }
+
+                }
+
+            }
+        })
+
+
+
 //        이메일 입력칸의 내용이 변경된 경우 > 중복검사를 다시 하도록 유도
 
         signUpEmailEdt.addTextChangedListener(object : TextWatcher{
