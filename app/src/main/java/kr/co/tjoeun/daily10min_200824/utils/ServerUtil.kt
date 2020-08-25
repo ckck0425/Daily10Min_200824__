@@ -24,7 +24,7 @@ class ServerUtil {
         val BASE_URL = "http://15.164.153.174"
 
 //        로그인 기능 > 로그인을 수행하는 함수 작성
-        fun postRequestLogin(id : String, pw:String){
+        fun postRequestLogin(id : String, pw:String, handler:JsonResponseHandler?){
 
 //          안드로이드 앱이 클라이언트로 동작하도록 도와주기
             val client = OkHttpClient()
@@ -66,7 +66,7 @@ class ServerUtil {
 //                    어떤 처리를 해줄지 가이드북 (인터페이스) 이 존재한다면,
 //                    그 가이드북에 적힌 내용을 실제로 실행
 
-                    handler?.onResonse(json)
+                    handler?.onResponse(json)
 
                 }
 
