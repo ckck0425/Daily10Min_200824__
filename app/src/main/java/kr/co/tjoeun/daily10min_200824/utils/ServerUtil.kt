@@ -79,7 +79,7 @@ class ServerUtil {
         fun getRequestEmailCheck(emailAddress : String, handler : JsonResponseHandler?){
 
 //            서버에 Request 를 날려주는 클라이언트 역할을 돕는 변수
-            val client = OkHttpClient
+            val client = OkHttpClient()
 
 //            url (호스트주소+기능주소)을 만드는 과정에서 > 필요 파라미터도 가공-첨부
             val urlBuilder = "${BASE_URL}/email_check".toHttpUrlOrNull()!!.newBuilder()
