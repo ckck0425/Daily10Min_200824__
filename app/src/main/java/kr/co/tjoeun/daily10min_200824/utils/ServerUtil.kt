@@ -1,12 +1,19 @@
 package kr.co.tjoeun.daily10min_200824.utils
 
+import android.os.Handler
 import android.util.Log
 import okhttp3.*
+import okhttp3.internal.http2.Http2Reader
 import org.json.JSONObject
 import java.io.IOException
 import java.sql.ClientInfoStatus
 
 class ServerUtil {
+
+//    화면 (액티비티)의 입장에서 서버응답이 돌아왔을때 실행해줄 내용을 담기위한 인터페이스
+    interface JsonResponseHandler{
+        fun onResponse(json : JSONObject)
+    }
 
     companion object {
 
@@ -55,6 +62,11 @@ class ServerUtil {
                     val json = JSONObject(bodyString)
 
                     Log.d("서버응답본문", json.toString())
+
+//                    어떤 처리를 해줄지 가이드북 (인터페이스) 이 존재한다면,
+//                    그 가이드북에 적힌 내용을 실제로 실행
+
+                    handler?.onResonse(json)
 
                 }
 
