@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10min_200824.R
 import kr.co.tjoeun.daily10min_200824.datas.Project
 
