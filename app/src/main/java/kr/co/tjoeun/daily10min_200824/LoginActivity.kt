@@ -42,9 +42,14 @@ class LoginActivity : BaseActivity() {
                         Log.d("로그인시도", "성공상황")
 
 //                        토스트도 일종의 UI 영향 코드 => runOnUiThread 안에서 실행
-                        runOnUiThread {
-                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        }
+//                        runOnUiThread {
+//                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+//                        }
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
+
+//                        메인으로 이동 후에는 로그인화면은 종료하자
+                        finish()
                     }
 
                     else {
