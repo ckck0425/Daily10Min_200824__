@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10min_200824
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.co.tjoeun.daily10min_200824.datas.Project
 
 class MainActivity : BaseActivity() {
 
