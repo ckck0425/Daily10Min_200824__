@@ -1,11 +1,15 @@
 package kr.co.tjoeun.daily10min_200824
 
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10min_200824.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10min_200824.datas.Project
+import kr.co.tjoeun.daily10min_200824.utils.ContextUtil
 import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
 import org.json.JSONObject
 
@@ -23,6 +27,21 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        logoutBtn.setOnClickListener{
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("로그아웃 확인")
+            alert.setMessage("정말 로그아웃 하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener{ DialogInterface, in
+
+//                실제 로그아웃 처리 => 저장되어 있는 토큰을 날려버리자
+                ContextUtil.setLoginUserToken(mContext, "")
+                val myIntent = Intent(mContext, LoginActivity::class.java)
+                startActivity(myIntent)
+            })
+            alert.setNegativeButton("취소", null)
+            alert.show()
+        }
 
     }
 
