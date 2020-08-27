@@ -35,6 +35,8 @@ class ProjectAdapter(
         projectTitleTxt.text = data.title
         projectDes.text = data.description
 
+        Glide.with(mContext).load(data.imageUrl).into(projectImg)
+
 
         return row
 
