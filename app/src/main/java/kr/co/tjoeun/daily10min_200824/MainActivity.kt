@@ -38,7 +38,14 @@ class MainActivity : BaseActivity() {
                 for (i in 0 until projectArr.length()){
                     val projectObj = projectArr.getJSONObject(i)
 
-                    Log.d("프로젝트 제목", projectObj.getString("title"))
+                    val project = Project()
+                    project.id = projectObj.getInt("id")
+                    project.title = projectObj.getString("title")
+                    project.imageUrl = projectObj.getString("img_url")
+                    project.description = projectObj.getString("description")
+
+                    mProjectList.add(project)
+
 
                 }
 
