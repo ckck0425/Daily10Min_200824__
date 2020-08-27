@@ -44,6 +44,16 @@ class LoginActivity : BaseActivity() {
                     val codeNum = json.getInt("code")
 
                     if (codeNum == 200) {
+
+//                        서버가 알려주는 로그인한 사용자의 토큰값을 받아서
+//                        ContextUtil의 기능으로 토큰을 저장하자.
+
+                        val data = json.getJSONObject("data")
+
+                        val token = data.getString("token")
+
+                        ContextUtil.setLoginUserToken(mContext, token)
+
 //                        서버개발자가 -> 로그인 성공일때는 code를 200으로 줌
 //                        로그인 성공시에 대한 코드
                         Log.d("로그인시도", "성공상황")
