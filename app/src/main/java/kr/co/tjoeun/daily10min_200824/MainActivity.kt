@@ -3,6 +3,8 @@ package kr.co.tjoeun.daily10min_200824
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kr.co.tjoeun.daily10min_200824.datas.Project
+import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
+import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
@@ -20,6 +22,17 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        getProjectListFromServer()
+    }
+
+    fun getProjectListFromServer() {
+        ServerUtil.getRequestProjectList(mContext, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(json: JSONObject) {
+
+            }
+
+        })
 
     }
 }
