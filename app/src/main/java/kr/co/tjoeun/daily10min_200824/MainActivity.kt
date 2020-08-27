@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10min_200824
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kr.co.tjoeun.daily10min_200824.datas.Project
 import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
 import org.json.JSONObject
@@ -29,6 +30,17 @@ class MainActivity : BaseActivity() {
     fun getProjectListFromServer() {
         ServerUtil.getRequestProjectList(mContext, object : ServerUtil.JsonResponseHandler {
             override fun onResponse(json: JSONObject) {
+
+                val dataObj = json.getJSONObject("data")
+                val projectArr = dataObj.getJSONArray("projects")
+
+//                프로젝트가 10개  : 반복 -> 0,1,2, ...,9
+                for (i in 0 until projectArr.length()){
+                    val projectObj = projectArr.getJSONObject(i)
+
+                    Log.d("프로젝트 제목", projectObj.getString("title"))
+
+                }
 
             }
 
