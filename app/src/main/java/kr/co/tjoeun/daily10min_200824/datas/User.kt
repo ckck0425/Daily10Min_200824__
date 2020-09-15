@@ -26,7 +26,7 @@ class User {
 
             user.id = json.getInt("id")
             user.email = json.getString("email")
-            user.nickName = json.getString("nick_name")
+            user.nickname = json.getString("nick_name")
 
 
 //            사용자의 프사 목록도 파싱해야함.
