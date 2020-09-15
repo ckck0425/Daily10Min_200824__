@@ -73,14 +73,11 @@ class MainActivity : BaseActivity() {
                 val projectArr = dataObj.getJSONArray("projects")
 
 //                프로젝트가 10개  : 반복 -> 0,1,2, ...,9
+
                 for (i in 0 until projectArr.length()){
                     val projectObj = projectArr.getJSONObject(i)
 
-                    val project = Project()
-                    project.id = projectObj.getInt("id")
-                    project.title = projectObj.getString("title")
-                    project.imageUrl = projectObj.getString("img_url")
-                    project.description = projectObj.getString("description")
+                    val project = Project.getProjectFromJson(projectObj)
 
                     mProjectList.add(project)
                 }

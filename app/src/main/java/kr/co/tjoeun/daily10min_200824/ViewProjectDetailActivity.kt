@@ -51,6 +51,8 @@ class ViewProjectDetailActivity : BaseActivity() {
 
                 val data = json.getJSONObject("data")
                 val projectObj = data.getJSONObject("project")
+
+                mProject = Project.getProjectFromJson(projectObj)
             }
         })
     }
