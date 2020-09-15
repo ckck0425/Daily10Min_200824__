@@ -1,6 +1,5 @@
 package kr.co.tjoeun.daily10min_200824
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +11,7 @@ import kr.co.tjoeun.daily10min_200824.datas.Project
 import kr.co.tjoeun.daily10min_200824.utils.ContextUtil
 import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
 import org.json.JSONObject
+import android.content.DialogInterface as DialogInterface
 
 class MainActivity : BaseActivity() {
 
@@ -32,7 +32,7 @@ class MainActivity : BaseActivity() {
             val alert = AlertDialog.Builder(mContext)
             alert.setTitle("로그아웃 확인")
             alert.setMessage("정말 로그아웃 하시겠습니까?")
-            alert.setPositiveButton("확인", DialogInterface.OnClickListener{ DialogInterface, in
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener{ DialogInterface , i ->
 
 //                실제 로그아웃 처리 => 저장되어 있는 토큰을 날려버리자
                 ContextUtil.setLoginUserToken(mContext, "")
