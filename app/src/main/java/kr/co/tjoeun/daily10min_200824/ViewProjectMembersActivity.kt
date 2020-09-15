@@ -16,6 +16,7 @@ class ViewProjectMembersActivity : BaseActivity() {
 
     lateinit var mProject : Project
     val mProjectMembers = ArrayList<User>()
+    lateinit var mAdapter : ProjectMemberAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -33,6 +34,12 @@ class ViewProjectMembersActivity : BaseActivity() {
     override fun setValues() {
 
         mProject = intent.getSerializableExtra("project") as Project
+
+
+
+        mAdapter = ProjectMemberAdapter(mContext, R.layout.user_list_item, mProjectMembers)
+        membersListView.adapter = mAdapter
+
         getProjectMembersFromServer()
     }
 
@@ -57,6 +64,14 @@ class ViewProjectMembersActivity : BaseActivity() {
 
                     mProjectMembers.add(user)
                 }
+
+
+
+//                프로젝트 멤버들이 추가되었으니 => 리스트뷰에 새로 반영 처리.
+//                서버 통신중 UI에 영향 => runOnUiThread로 처리하자.
+
+                runOnUiThread {
+                    mAdapter.notifyDataSetChanged()
             }
         })
 
