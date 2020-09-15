@@ -25,6 +25,19 @@ class ProjectMemberAdapter(
             tempRow = inf.inflate(R.layout.user_list_item, null)
         }
         val row = tempRow!!
+
+
+        val userFirstProfileImg = row.findViewById<ImageView>(R.id.userFirstProfileImg)
+        val userNickname = row.findViewById<TextView>(R.id.userNickNameTxt)
+        val userEmail = row.findViewById<TextView>(R.id.userEmailTxt)
+
+        val user = mList[position]
+
+        userNickname.text = user.nickname
+        userEmail.text = user.email
+
+        Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
+
         return row
     }
 

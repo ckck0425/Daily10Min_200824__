@@ -3,11 +3,13 @@ package kr.co.tjoeun.daily10minutes_20200824
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_view_project_members.*
 import kr.co.tjoeun.daily10min_200824.BaseActivity
 import kr.co.tjoeun.daily10min_200824.R
 import kr.co.tjoeun.daily10min_200824.datas.Project
 import kr.co.tjoeun.daily10min_200824.datas.User
 import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectMemberAdapter
 import org.json.JSONObject
 
 class ViewProjectMembersActivity : BaseActivity() {
