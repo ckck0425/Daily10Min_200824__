@@ -11,6 +11,7 @@ class Project : Serializable {
     var description = ""
     var proofMethod = ""
     var onGoingMemberCount = 0
+    var myLastStatus : String? = null
 
     companion object {
 
@@ -25,6 +26,14 @@ class Project : Serializable {
 
             project.proofMethod = json.getString("proof_method")
             project.onGoingMemberCount = json.getInt("ongoing_users_count")
+
+//            서버에서 주는 데이터가 null 일 수 있거나
+//            아예 상황에 따라 첨부되지 않을 수도 있는 항목은
+//            isNull로 체크해서, null 이 아닐때만 파싱하는게 앱의 안정성을 높힌다.
+
+            if (!json.isNull("my_last_status")) {
+                project.myLastStatus = json.getString("my_last_status")
+            }
 
             return project
         }
