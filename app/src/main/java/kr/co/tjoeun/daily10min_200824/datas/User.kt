@@ -31,6 +31,24 @@ class User {
 
 //            사용자의 프사 목록도 파싱해야함.
 
+            //            json 변수 내의 profile_images JSONArray를 추가로 파싱하자.
+
+
+            val pfImgJsonArr = json.getJSONArray("profile_images")
+
+            for (i in   0 until pfImgJsonArr.length() ) {
+
+
+//                프사정보 JSONObject 하나하나 추출.
+
+                val pfImgObj = pfImgJsonArr.getJSONObject(i)
+
+//                따낸 JSONObject 안에서 이미지주소 String만 추출 => user의 프사목록에 추가
+
+                val imageUrl = pfImgObj.getString("img_url")
+                user.profileImageArrayList.add(imageUrl)
+            }
+
             return user
         }
     }
