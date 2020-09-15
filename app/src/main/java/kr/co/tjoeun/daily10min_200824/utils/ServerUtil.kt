@@ -213,5 +213,50 @@ class ServerUtil {
             })
         }
 
+        fun getRequestProjectDetailById(context: Context, projectId: Int, handler: JsonResponseHandler?) {
+
+//            서버에 Request를 날려주는 클라이언트 역할을 돕는 변수
+
+            val client = OkHttpClient()
+
+//            url (호스트주소+기능주소)을 만드는 과정에서 => 필요 파라미터도 가공-첨부
+
+            val urlBuilder = "${BASE_URL}/project/${projectId}".toHttpUrlOrNull()!!.newBuilder()
+
+//            url 가공기를 이용해서 => 필요 데이터 첨부
+//            urlBuilder.addEncodedQueryParameter("email", emailAddress)
+//            가공이 끝난 url을 => urlStr 으로 완성
+
+            val urlStr = urlBuilder.build().toString()
+
+//            임시 : 어떻게 url이 가공되었는지 로그로 확인
+
+            Log.d("완성된url", urlStr)
+
+
+//            요청 정보를 담는 request
+
+            val request = Request.Builder()
+                .url(urlStr)
+                .get()
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("서버응답본문", json.toString())
+                    handler?.onResponse(json)
+                }
+            })
+        }
+
     }
 }
