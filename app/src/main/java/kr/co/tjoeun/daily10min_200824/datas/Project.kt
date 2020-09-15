@@ -9,6 +9,8 @@ class Project : Serializable {
     var title = ""
     var imageUrl = ""
     var description = ""
+    var proofMethod = ""
+    var onGoingMemberCount = 0
 
     companion object {
 
@@ -20,6 +22,10 @@ class Project : Serializable {
             project.title = json.getString("title")
             project.imageUrl = json.getString("img_url")
             project.description = json.getString("description")
+
+            project.proofMethod = json.getString("proof_method")
+            project.onGoingMemberCount = json.getInt("ongoing_users_count")
+
             return project
         }
     }

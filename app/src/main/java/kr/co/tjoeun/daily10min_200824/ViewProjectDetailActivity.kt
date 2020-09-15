@@ -53,6 +53,13 @@ class ViewProjectDetailActivity : BaseActivity() {
                 val projectObj = data.getJSONObject("project")
 
                 mProject = Project.getProjectFromJson(projectObj)
+
+                runOnUiThread {
+                    proofMethodTxt.text = mProject.proofMethod
+                    onGoingMemberCountTxt.text = "(현재 참여 인원 : ${mProject.onGoingMemberCount}명)"
+
+                }
+
             }
         })
     }
