@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewProjectMembersActivity"></activity>
+        <activity android:name=".ViewDailyProofActivity"></activity>
+        <activity android:name=".ViewProjectMembersActivity" />
         <activity android:name=".ViewProjectDetailActivity" />
         <activity android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
