@@ -7,6 +7,8 @@ import kr.co.tjoeun.daily10min_200824.BaseActivity
 import kr.co.tjoeun.daily10min_200824.R
 import kr.co.tjoeun.daily10min_200824.datas.Project
 import kr.co.tjoeun.daily10min_200824.datas.User
+import kr.co.tjoeun.daily10min_200824.utils.ServerUtil
+import org.json.JSONObject
 
 class ViewProjectMembersActivity : BaseActivity() {
 
@@ -37,6 +39,22 @@ class ViewProjectMembersActivity : BaseActivity() {
 //    서버에서 프로젝트의 참여 멤버 불러오는 기능
 
     fun getProjectMembersFromServer() {
+
+        ServerUtil.getRequestProjectMemberById(mContext, mProject.id, object : ServerUtil.JsonResponseHandler {
+
+            override fun onResponse(json: JSONObject) {
+
+                val data = json.getJSONObject("data")
+                val projectObj = data.getJSONObject("project")
+                val ongoingUsersArr = projectObj.getJSONArray("ongoing_users")
+
+                for (i in 0 until ongoingUsersArr.length()) {
+                    val memberObj = ongoingUsersArr.getJSONObject(i)
+
+//                    memberObj => User 형태로 변환 => ArrayList에 추가
+                }
+            }
+        })
 
     }
 
