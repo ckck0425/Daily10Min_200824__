@@ -43,8 +43,29 @@ class ViewProjectDetailActivity : BaseActivity() {
                 ServerUtil.postRequestApplyProject(mContext, mProject.id, object : ServerUtil.JsonResponseHandler {
 
                     override fun onResponse(json: JSONObject) {
-                        runOnUiThread {
-                            Toast.makeText(mContext, "프로젝트 참가 신청 완료", Toast.LENGTH_SHORT).show()
+
+//                        자동 새로고침이 구현은 되지만 => 서버를 한번 더 다녀와야함.
+//                        신청 결과에서 알려주는 데이터를 화면에 반영.
+//                        getProjectDetailFromServer()
+
+                        val code = json.getInt("code")
+
+                        if (code == 200) {
+                            val data = json.getJSONObject("data")
+                            val projectObj = data.getJSONObject("project")
+                            mProject = Project.getProjectFromJson(projectObj)
+
+
+                            runOnUiThread {
+
+                                Toast.makeText(mContext, "프로젝트 참가 신청 완료", Toast.LENGTH_SHORT).show()
+
+//                                인원수 / 참가 버튼 등 UI 변경
+
+                                refreshProjectDataToUI()
+
+                            }
+
 
                         }
                     }
@@ -87,8 +108,19 @@ class ViewProjectDetailActivity : BaseActivity() {
                 mProject = Project.getProjectFromJson(projectObj)
 
                 runOnUiThread {
-                    proofMethodTxt.text = mProject.proofMethod
-                    onGoingMemberCountTxt.text = "(현재 참여 인원 : ${mProject.onGoingMemberCount}명)"
+                    refreshProjectDataToUI()
+                }
+            }
+        })
+    }
+
+//    서버에서 준 프로젝트 정보 (내용이 변경된 mProject)를 => UI에 새로 반영하는 기능
+
+    fun refreshProjectDataToUI() {
+
+        proofMethodTxt.text = mProject.proofMethod
+        onGoingMemberCountTxt.text = "(현재 참여 인원 : ${mProject.onGoingMemberCount}명)"
+
 
 //                    myLastStatus => 마지막으로 변경된 프로젝트 신청 상태
 //                    null : 신청한적이 없다.
@@ -97,21 +129,15 @@ class ViewProjectDetailActivity : BaseActivity() {
 //                    COMPLETE : 66(프로젝트마다 다름)일 짜리 모두 수행 완료.
 //                    신청하기 언제? 그 외의 모든 상황.
 //                    중도 포기 언제? 상태가 ONGOING일때.
+        if (mProject.myLastStatus == "ONGOING") {
+            giveUpBtn.isEnabled = true
+            applyBtn.isEnabled = false
+        }
 
-                    if (mProject.myLastStatus == "ONGOING") {
-                        giveUpBtn.isEnabled = true
-                        applyBtn.isEnabled = false
-                    }
+        else {
+            giveUpBtn.isEnabled = false
+            applyBtn.isEnabled = true
 
-                    else {
-                        giveUpBtn.isEnabled = false
-                        applyBtn.isEnabled = true
-                    }
-
-                }
-
-            }
-        })
     }
 
 }
