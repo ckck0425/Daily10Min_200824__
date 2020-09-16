@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_view_daily_proof.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -50,6 +51,10 @@ class ViewDailyProofActivity : BaseActivity() {
                 Log.d("선택된 월", selectedDate.get(Calendar.MONTH).toString())
                 Log.d("선택된 일", selectedDate.get(Calendar.DAY_OF_MONTH).toString())
 
+                val sdf = SimpleDateFormat("yyyy-MM-dd")
+                val selectedDateStr = sdf.format(selectedDate.time)
+                selectedDateTxt.text = selectedDateStr
+
 
 //                실생활 : 1~12월
 //                JAVA / Kotlin : 0~11월
@@ -64,6 +69,15 @@ class ViewDailyProofActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+//        이 화면이 실행되면 오늘날짜를 => 2020년 9월 5일 양식으로 selectedDateTxt 에 출력
+
+        val todayCal = Calendar.getInstance() // 기본값이 현재 일시 -> 오늘 날짜가 담겨있다
+        val sdf = SimpleDateFormat("yyyy년 M월 d일")
+        val todayStr = sdf.format(todayCal.time)
+        selectedDateTxt.text = todayStr
+
+
 
     }
 }
