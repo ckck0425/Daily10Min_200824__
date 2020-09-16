@@ -49,7 +49,6 @@ class ProofAdapter {
             }
 
 
-
             else {
 
 //            하나 이상의 사진이 있는 경우
