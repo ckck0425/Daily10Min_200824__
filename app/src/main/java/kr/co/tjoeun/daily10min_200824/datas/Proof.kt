@@ -9,6 +9,10 @@ class Proof {
 //    게시글에 첨부된 이미지들
     val imgList = ArrayList<String>()
 
+
+//    이 게시글을 쓴 사람의 정보
+    lateinit var writer : User
+
     companion object {
 
         fun getProofFromJson(json: JSONObject) : Proof {
@@ -23,6 +27,11 @@ class Proof {
                 proof.imgList.add(imgObj.getString("img_url"))
 
             }
+
+ //            인증글의 작성자 정보 파싱
+            val userObj = json.getJSONObject("user")
+
+            proof.writer = User.getUserFromJson(userObj)
 
             return proof
         }
