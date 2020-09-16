@@ -29,6 +29,8 @@ class ProofAdapter {
             val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
             val writerProfileImg = row.findViewById<ImageView>(R.id.writerProfileImg)
             val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
+            val replyBtn = row.findViewById<Button>(R.id.replyBtn)
+            val likeBtn = row.findViewById<Button>(R.id.likeBtn)
 
             val date = mList[position]
 
@@ -61,6 +63,11 @@ class ProofAdapter {
 //        작성자 프사 / 닉네임 반영
             Glide.with(mContext).load(data.writer.profileImageArrayList[0]).into(writerProfileImg)
             writerNickNameTxt.text = data.writer.nickName
+
+
+//        좋아요 갯수 / 댓글 갯수 반영
+            likeBtn.text = "좋아요 : ${data.likeCount}개"
+            replyBtn.text = "댓글 : ${data.replyCount}개"
 
             return row
 
