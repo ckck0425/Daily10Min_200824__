@@ -127,32 +127,18 @@
                 </LinearLayout>
 
                 <TextView
-
-
-
+                    android:id="@+id/proofContentTxt"
                     android:layout_width="wrap_content"
-
-
-
                     android:layout_height="wrap_content"
-
-
-
                     android:textSize="18sp"
-
-
-
                     android:layout_marginTop="5dp"
-
-
-
-                    android:text="인증글 내용" />
+                    tools:text="인증글 내용" />
 
 
             </LinearLayout>
 
             <ImageView
-
+                android:id="@+id/proofFirstImg"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 tools:src="@mipmap/ic_launcher"
