@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10min_200824
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_login.view.*
@@ -32,6 +33,12 @@ class ViewDailyProofActivity : BaseActivity() {
 
     }
     override fun setupEvents() {
+
+        writeProofBtn.setOnClickListener {
+            val myIntent = Intent(mContext, EditProofActivity::class.java)
+            myIntent.putExtra("project", mProject)
+            startActivity(myIntent)
+        }
 
 
         selectDateBtn.setOnClickListener {
