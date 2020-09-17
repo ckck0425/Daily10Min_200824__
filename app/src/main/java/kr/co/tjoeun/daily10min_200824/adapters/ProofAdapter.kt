@@ -75,22 +75,19 @@ class ProofAdapter {
             replyBtn.text = "댓글 : ${data.replyCount}개"
 
 //            내 좋아요 여부 반영
-//            내가 좋아요 X -> 회색 테두리 박스
-//            내가 좋아요 O -> 빨간 테두리 박스
+//        내가 좋아요 X -> 회색 테두리 박스 + 글씨 색도 회색
+//        내가 좋아요 O -> 빨간 테두리 박스 + 글씨 색도 빨강
 
             if (data.isMyLikeProof) {
                 likeBtn.setBackgroundResource(R.drawable.red_border_box)
+                likeBtn.setTextColor(mContext.resources.getColor(R.color.red))
             }
             else {
                 likeBtn.setBackgroundResource(R.drawable.gray_border_box)
-            }        }
+                likeBtn.setTextColor(mContext.resources.getColor(R.color.darkGray))
+            }
 
 //        좋아요 버튼이 눌리면 => /like_proof - POST  호출하도록.
-
-
-
-
-
 
 
             likeBtn.setOnClickListener {
