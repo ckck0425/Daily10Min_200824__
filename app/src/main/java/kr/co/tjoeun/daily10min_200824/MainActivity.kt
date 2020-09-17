@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.my_custom_actionbar.*
 import kr.co.tjoeun.daily10min_200824.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10min_200824.datas.Project
 import kr.co.tjoeun.daily10min_200824.utils.ContextUtil
@@ -58,6 +60,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        notiImg.visibility = View.VISIBLE
 
 //        등록된 기기 토큰이 어떤건지 확인 -> ex. dFcyADKLZJCKLVJZCJVIEWQJLKADJFCZ2312_DAFdaskjl
 
