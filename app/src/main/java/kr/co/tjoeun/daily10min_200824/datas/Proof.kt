@@ -17,6 +17,9 @@ class Proof {
     var replyCount = 0
     var likeCount = 0
 
+//    내가 좋아요를 찍었는지 여부
+    var isMyLikeProof = false
+
     companion object {
 
         fun getProofFromJson(json: JSONObject) : Proof {
@@ -42,6 +45,10 @@ class Proof {
 
             proof.replyCount = json.getInt("reply_count")
             proof.likeCount = json.getInt("like_count")
+
+//            내 좋아요 여부 파싱
+
+            proof.isMyLikeProof = json.getBoolean("my_like")
 
             return proof
         }
